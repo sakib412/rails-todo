@@ -3,7 +3,7 @@ class Api::V1::TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(created_at: :desc)
 
     render json: @tasks
   end
@@ -46,6 +46,6 @@ class Api::V1::TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :body)
+      params.require(:task).permit(:title, :status)
     end
 end

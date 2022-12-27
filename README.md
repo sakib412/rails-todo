@@ -11,7 +11,8 @@ Things you may want to cover:
 
 * Configuration
 
-* Database creation - `rails db:create`
+* Database creation -
+    Change your database configuration in `config/database.yml` and run `rails db:create`
 
 * Database initialization  - `rails db:migrate`
 

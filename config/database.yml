@@ -85,6 +85,4 @@ test:
 #
 production:
   <<: *default
-  database: todo
-  username: postgres
-  password: <%= ENV["TODO_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

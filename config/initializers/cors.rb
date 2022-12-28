@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "https://rescript-task.vercel.app/"
+    origins "rescript-task.vercel.app"
 
     resource "*",
       headers: :any,

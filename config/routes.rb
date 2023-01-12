@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :tasks
+      resources :users, param: :email
+      post '/auth/login', to: 'authentication#login'
+      get '/auth/me', to: 'authentication#get_me'
     end
   end
 

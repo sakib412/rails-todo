@@ -8,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
     render json: @users, except: [:password_digest], status: :ok
   end
 
-  # GET /users/{username}
+  # GET /users/{id}
   def show
     render json: @user, status: :ok
   end
@@ -24,7 +24,7 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  # PUT /users/{username}
+  # PUT /users/{id}
   def update
     return if @user.update(user_params)
 
@@ -32,15 +32,10 @@ class Api::V1::UsersController < ApplicationController
            status: :unprocessable_entity
   end
 
-  # DELETE /users/{username}
-  def destroy
-    @user.destroy
-  end
-
   private
 
   def find_user
-    @user = User.find_by_email!(params[:email])
+    @user = User.find!(@current_user.id)
   rescue ActiveRecord::RecordNotFound
     render json: { errors: 'User not found' }, status: :not_found
   end

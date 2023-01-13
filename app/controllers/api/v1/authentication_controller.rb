@@ -8,8 +8,8 @@ class Api::V1::AuthenticationController < ApplicationController
       require('json_web_token')
       token = JsonWebToken.encode(user_id: @user.id)
       time = Time.now + 24.hours.to_i
-      render json: { token:, exp: time.strftime('%m-%d-%Y %H:%M'),
-                     email: @user.email }, status: :ok
+      render json: { user: @user, token:, exp: time.strftime('%m-%d-%Y %H:%M') }, except: [:password_digest],
+             status: :ok
     else
       render json: { error: 'unauthorized' }, status: :unauthorized
     end

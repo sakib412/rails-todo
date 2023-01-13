@@ -52,6 +52,8 @@ class Api::V1::TasksController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_task
     @task = Task.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { errors: 'Task not found' }, status: :not_found
   end
 
   # Only allow a list of trusted parameters through.

@@ -5,4 +5,5 @@ class User < ApplicationRecord
   validates :password,
             length: { in: 6..20  },
             if: -> { new_record? || !password.nil? }
+  has_many :tasks
 end

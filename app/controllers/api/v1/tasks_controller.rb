@@ -28,7 +28,7 @@ class Api::V1::TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   def update
     if @task.user_id != @current_user.id
-      render json: { errors: 'You are not authorized to update this task' },
+      render json: { errors: ['You are not authorized to update this task'] },
              status: :unauthorized
     elsif @task.update(task_params)
       render json: @task
@@ -40,7 +40,7 @@ class Api::V1::TasksController < ApplicationController
   # DELETE /tasks/1
   def destroy
     if @task.user_id != @current_user.id
-      render json: { errors: 'You are not authorized to delete this task' },
+      render json: { errors: ['You are not authorized to delete this task'] },
              status: :unauthorized
     else
       @task.destroy
@@ -53,7 +53,7 @@ class Api::V1::TasksController < ApplicationController
   def set_task
     @task = Task.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    render json: { errors: 'Task not found' }, status: :not_found
+    render json: { errors: ['Task not found'] }, status: :not_found
   end
 
   # Only allow a list of trusted parameters through.

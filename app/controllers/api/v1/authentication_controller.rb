@@ -11,7 +11,7 @@ class Api::V1::AuthenticationController < ApplicationController
       render json: { user: @user, token:, exp: time.strftime('%m-%d-%Y %H:%M') }, except: [:password_digest],
              status: :ok
     else
-      render json: { error: 'unauthorized' }, status: :unauthorized
+      render json: { errors: ['Wrong credentials'] }, status: :unauthorized
     end
   end
 

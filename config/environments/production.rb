@@ -7,6 +7,7 @@ Rails.application.configure do
   config.cache_classes = true
   config.hosts << 'rails-todo.up.railway.app'
   config.hosts << 'rails-todo-o0nv.onrender.com'
+  config.hosts << 'todo.westus3.cloudapp.azure.com'
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
